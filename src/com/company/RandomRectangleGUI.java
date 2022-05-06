@@ -9,6 +9,7 @@ public class RandomRectangleGUI {
     private JButton sizeButton;
 
     RectangleDrawPanel rectDrawPanel = new RectangleDrawPanel();
+    RandomColorListener randomColorListener = new RandomColorListener(this);
 
     public void createFrame() {
         frame = new JFrame("RectanglePlayFrame");
@@ -22,10 +23,12 @@ public class RandomRectangleGUI {
         frame.getContentPane().add(BorderLayout.PAGE_END, sizeButton);
         frame.getContentPane().add(BorderLayout.CENTER, rectDrawPanel);
 
-        colorButton.addActionListener(new RandomColorListener());
-        sizeButton.addActionListener(new RandomSizeListener());
+        colorButton.addActionListener(new RandomColorListener(this));
+        sizeButton.addActionListener(new RandomSizeListener(this));
         rectDrawPanel.repaint();
         frame.setVisible(true);
         //System.out.println("I create frame in rect gui class");
+
     }
+
 }
